@@ -8,8 +8,8 @@ class Database < SQLite3::Database
   def self.connection(environment)
     @connection ||= Database.new("db/iching_#{environment}.sqlite3")
   end
-  def create_tables
-    self.execute("CREATE TABLE pages
+  def create_table(table)
+    self.execute("CREATE TABLE #{table}
                  (id INTEGER PRIMARY KEY AUTOINCREMENT)")
   end
   def table_exists? table

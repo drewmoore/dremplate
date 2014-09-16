@@ -7,6 +7,7 @@ $LOAD_PATH << "lib"
 $LOAD_PATH << "app/models"
 require 'environment'
 require 'page'
+require 'content'
 
 Environment.environment = "test"
 
@@ -14,9 +15,13 @@ RSpec.configure do |config|
   config.after(:each) do
     if Environment.database_connection.table_exists? "pages"
       Page.delete_all
-      #Environment.database_connection.execute("DELETE FROM pages")
     else
-      Environment.database_connection.create_tables
+      Environment.database_connection.create_table "pages"
+    end
+    if Environment.database_connection.table_exists? "contents"
+      Content.delete_all
+    else
+      Environment.database_connection.create_table "contents"
     end
   end
   config.order = "random"

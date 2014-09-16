@@ -4,6 +4,8 @@ describe "Page" do
   before(:each) do
     p1 = Page.new
     p1.title = "Test Title"
+    p1.controller = "test_controller"
+    p1.action = "index"
     p1.save
   end
   context "construct object" do
@@ -27,9 +29,50 @@ describe "Page" do
       p_lookup = Page.find_by title: "Test Title"
       expect(p_lookup.title).to eql("Test Title")
     end
+    it "should have a controller in the database" do
+      p_lookup = Page.find_by controller: "test_controller"
+      expect(p_lookup.controller).to eql("test_controller")
+    end
+    it "should have an action in the database" do
+      p_lookup = Page.find_by action: "index"
+      expect(p_lookup.action).to eql("index")
+    end
+    it "should allow a page with a duplicate controller or action" do
+      p2 = Page.new
+      p3 = Page.new
+      p2.controller = "test_controller"
+      p2.action = "show"
+      p3.controller = "another_controller"
+      p3.action = "index"
+      p2.save
+      p3.save
+      p_lookup1 = Page.where(action: "index")
+      p_lookup2 = Page.where(controller: "test_controller")
+      expect(p_lookup1.length).to eql(2)
+      expect(p_lookup2.length).to eql(2)
+    end
+    it "should not add a page with a duplicate controller/action combination" do
+      p2 = Page.new
+      p2.controller = "test_controller"
+      p2.action = "index"
+      p2.save
+      p_lookup = Page.where(action: "index")
+      expect(p_lookup.length).to eql(1)
+    end
     it "should not have a bogus record in the database" do
       p_lookup = Page.find_by title: "False Title"
       expect(p_lookup).to be(nil)
+    end
+    it "should update record in database" do
+      p2 = Page.find_by title: "Test Title"
+      p2.title = "New Title"
+      p2.controller = "new_controller"
+      p2.action = "new_action"
+      p2.save
+      p_lookup = Page.find_by title: "New Title"
+      expect(p_lookup.title).to eql("New Title")
+      expect(p_lookup.controller).to eql("new_controller")
+      expect(p_lookup.action).to eql("new_action")
     end
   end
 end
