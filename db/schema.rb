@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916065014) do
+ActiveRecord::Schema.define(version: 20141001045419) do
 
   create_table "contents", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "text"
     t.string   "identifier"
+  end
+
+  create_table "contents_pages", id: false, force: true do |t|
+    t.integer "content_id", null: false
+    t.integer "page_id",    null: false
   end
 
   create_table "pages", force: true do |t|

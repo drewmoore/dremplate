@@ -74,5 +74,13 @@ describe "Page" do
       expect(p_lookup.controller).to eql("new_controller")
       expect(p_lookup.action).to eql("new_action")
     end
+    it "should have contents" do
+      c1 = Content.create(text: "content1 text", identifier: "content1-identifier")
+      c2 = Content.create(text: "content2 text", identifier: "content2-identifier")
+      p1.contents << c1
+      p1.contents << c2
+      p1.save
+      expect(p1.contents.length).to eql(2)
+    end
   end
 end
