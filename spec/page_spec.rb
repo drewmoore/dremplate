@@ -82,5 +82,13 @@ describe "Page" do
       p1.save
       expect(p1.contents.length).to eql(2)
     end
+    it "should have graphics" do
+      g1 = Graphic.create(path: "graphic1.png", identifier: "graphic1-identifier")
+      g2 = Graphic.create(path: "graphic2.png", identifier: "graphic2-identifier")
+      p1.graphics << g1
+      p1.graphics << g2
+      p1.save
+      expect(p1.graphics.length).to eql(2)
+    end
   end
 end

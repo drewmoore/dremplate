@@ -8,6 +8,7 @@ $LOAD_PATH << "app/models"
 require 'environment'
 require 'page'
 require 'content'
+require 'graphic'
 
 Environment.environment = "test"
 
@@ -22,6 +23,11 @@ RSpec.configure do |config|
       Content.delete_all
     else
       Environment.database_connection.create_table "contents"
+    end
+    if Environment.database_connection.table_exists? "graphics"
+      Graphic.delete_all
+    else
+      Environment.database_connection.create_table "graphics"
     end
   end
   config.order = "random"

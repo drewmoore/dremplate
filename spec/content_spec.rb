@@ -27,7 +27,7 @@ describe "Content" do
     c_lookup = Content.where identifier: "test-identifier"
     expect(c_lookup.length).to eql(1)
   end
-  it "should have at least one page associated with it" do
+  it "should have page associations" do
     p1 = Page.create(title:"Page 1 Title", action:"show", controller:"pages")
     p2 = Page.create(title:"Page 2 Title", action:"index", controller:"pages")
     c1 = Content.new(identifier:"identifier-1", text:"hello")
