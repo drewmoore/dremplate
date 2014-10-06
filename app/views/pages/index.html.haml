@@ -1,0 +1,14 @@
+=if flash[:notice]
+  .row
+    .col-xs-12
+      .notice
+        =flash[:notice]
+.row
+  .col-xs-12
+    - @pages.each do |page|
+      .row
+        .col-xs-12
+          %a{:href => page_path(page.id)}
+            %h2=page.title
+          %p
+            #{page.controller}##{page.action}
