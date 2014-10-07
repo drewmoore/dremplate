@@ -17,6 +17,20 @@ class GraphicsController < ApplicationController
     end
   end
 
+  def edit
+    @graphic = Graphic.find(params[:id])
+  end
+
+  def update
+    @graphic = Graphic.find(params[:id])
+    if @graphic.update_attributes(graphic_params)
+      flash[:notice] = "Graphic with identifier #{@graphic.identifier} has been updated."
+      redirect_to graphics_path
+    else
+      render "edit"
+    end
+  end
+
   def destroy
     @graphic = Graphic.find(params[:id])
     identifier = @graphic.identifier
