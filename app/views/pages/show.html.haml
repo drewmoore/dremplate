@@ -1,0 +1,8 @@
+.row
+  .col-xs-12
+    %h1=@page.title
+    %p
+      #{@page.controller}##{@page.action}
+    %a{ :href => edit_page_path(@page.id) }
+      %button Edit
+

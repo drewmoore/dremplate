@@ -8,7 +8,9 @@
     - @pages.each do |page|
       .row
         .col-xs-12
-          %a{:href => page_path(page.id)}
-            %h2=page.title
+          %h2=page.title
           %p
             #{page.controller}##{page.action}
+          /%a{:href => edit_page_path(page.id)}
+          = button_to "Edit", edit_page_path(page.id), :method => :get
+          = button_to "Delete", page, data: {confirm: "Are you sure you want to delete the page at #{page.controller}##{page.action}?"}, :method => :delete

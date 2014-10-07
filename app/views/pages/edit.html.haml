@@ -1,0 +1,38 @@
+.row
+  .col-xs-3
+  .col-xs-6
+    =form_for @page do |f|
+      %fieldset
+        %legend Edit a Page
+        =if @page.errors.any?
+          .row
+            .col-xs-12
+              %h2 Errors:
+              %ul
+                =@page.errors.full_messages.each do |m|
+                  %li=m
+        .row
+          .col-xs-4
+            =f.label :title
+          .col-xs-4
+            =f.text_field :title
+        .row
+          .col-xs-4
+            =f.label :controller do
+              Controller <small class="asterisk">*</small>
+          .col-xs-4
+            =f.text_field :controller, :required => true
+        .row
+          .col-xs-4
+            =f.label :action do
+              Action <small class="asterisk">*</small>
+          .col-xs-4
+            =f.text_field :action, :required => true
+        .row
+          .col-xs-12
+            =f.submit "Update the Page"
+        .row
+          .col-xs-12
+            %label.required-label
+              %small.asterisk * required
+  .col-xs-3
