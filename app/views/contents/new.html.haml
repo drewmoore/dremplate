@@ -9,7 +9,7 @@
             .col-xs-12
               %h2 Errors:
               %ul
-                = @content.errors.full_messages.each do |message|
+                = @content.errors.full_messages.each do |m|
                   %li=m
         .row
           .col-xs-4

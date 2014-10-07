@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001204600) do
+ActiveRecord::Schema.define(version: 20141007181915) do
 
   create_table "contents", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141001204600) do
     t.datetime "updated_at"
     t.string   "identifier"
     t.string   "path"
+    t.string   "image"
   end
 
   create_table "graphics_pages", id: false, force: true do |t|
