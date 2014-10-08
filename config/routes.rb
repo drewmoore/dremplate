@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
     authenticated :user do
-      root :to => 'pages#index'
+      root :to => 'welcome#index'
       resources :pages
       resources :contents
       resources :graphics
+      get '/controls', to: 'controls#index'
     end
     unauthenticated :user do
       root 'welcome#index', as: :unauthenticated_root

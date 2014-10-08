@@ -8,7 +8,70 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
+
+  <% if user_signed_in? %>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Dremplate</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/controls">Control Panel Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#"><strong>Manage:</strong></a></li>
+              <li><a href="/pages">Edit</a></li>
+              <li><a href="/pages/new">Create New</a></li>
+              <li class="divider"></li>
+              <li><a href="#"><strong>View:</strong></a></li>
+              <% if @pages %>
+                <% @pages.each do |page| %>
+                  <li>
+                    <%= link_to("#{page.title} | #{page.controller}##{page.action}", :controller => page.controller, :action => page.action) %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/contents">Edit</a></li>
+              <li><a href="/contents/new">Create New</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Graphics<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/graphics">Edit</a></li>
+              <li><a href="/graphics/new">Create New</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <% if user_signed_in? %>
+              <%= button_to "Sign Out", destroy_user_session_path, :method => :delete %>
+            <% else %>
+              <a href="/users/sign_in">Sign In</a>
+            <% end %>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </nav>
+  <% end %>
+
   <% if flash[:notice] %>
     <div class="row">
       <div class="col-xs-12">
@@ -28,10 +91,11 @@
     </div>
   <% end %>
 
-
-  <%= button_to "Sign Out", destroy_user_session_path, :method => :delete %>
-
   <%= yield %>
+
+  <div>
+    <a href="/users/sign_in">Control Panel</a>
+  </div>
 
 </div>
 
