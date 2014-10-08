@@ -1,14 +1,9 @@
-=if flash[:notice]
-  .row
-    .col-xs-12
-      .notice
-        =flash[:notice]
 .row
   .col-xs-12
     - @graphics.each do |graphic|
       .row
         .col-xs-12
           %h2=graphic.identifier
-          =image_tag(graphic.image, class: graphic.identifier)
+          =image_tag(asset_path(graphic.image), class: graphic.identifier)
           = button_to "Edit", edit_graphic_path(graphic.id), :method => :get
           = button_to "Delete", graphic, data: {confirm: "Are you sure you want to delete the graphic?"}, :method => :delete

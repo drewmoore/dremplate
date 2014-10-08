@@ -9,7 +9,30 @@
 <body>
 
 <div class="container">
+  <% if flash[:notice] %>
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="notice">
+          <%= flash[:notice] %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="alert">
+          <%= flash[:alert] %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+
+  <%= button_to "Sign Out", destroy_user_session_path, :method => :delete %>
+
   <%= yield %>
+
 </div>
 
 </body>

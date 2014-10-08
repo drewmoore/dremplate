@@ -1,10 +1,25 @@
 Rails.application.routes.draw do
+  devise_for :users
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'pages#index'
+      resources :pages
+      resources :contents
+      resources :graphics
+    end
+    unauthenticated :user do
+      root 'welcome#index', as: :unauthenticated_root
+      get '/pages/(*all)', to: redirect('/')
+      get '/contents/(*all)', to: redirect('/')
+      get '/graphics/(*all)', to: redirect('/')
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -14,9 +29,6 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :pages
-  resources :contents
-  resources :graphics
 
   # Example resource route with options:
   #   resources :products do

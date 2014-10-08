@@ -43,3 +43,8 @@ gem 'haml'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'therubyracer'
 gem 'carrierwave'
+gem 'devise'
+
+group :production do
+  gem 'rails_12factor'
+end
