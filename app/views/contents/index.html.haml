@@ -6,7 +6,14 @@
           %h2= content.identifier
       .row
         .col-xs-12
-          %p= content.text
+          %p
+            =render inline: content.text
+          - if content.pages
+            - string = "On Pages:"
+            - content.pages.each do |page|
+              - string += " <a href='pages/#{page.id}/edit'>#{page.controller}##{page.action}</a>"
+            %p
+              =render inline: string
       .row
         .col-xs-12
           = button_to "Edit", edit_content_path(content.id), :method => :get
