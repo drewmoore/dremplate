@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :contents
       resources :graphics
       get '/controls', to: 'controls#index'
+      post '/pages/add-content', to: 'pages#add_content'
     end
     unauthenticated :user do
       root 'welcome#index', as: :unauthenticated_root

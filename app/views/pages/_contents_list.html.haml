@@ -1,0 +1,11 @@
+- if @errors
+  %ul
+    - @errors.each do |error|
+      %li
+        %p.alert=error
+- if @page.contents
+  %ul
+    - @page.contents.each do |content|
+      %li
+        %h5=link_to "#{content.identifier}", edit_content_path(content)
+        %p=content.text

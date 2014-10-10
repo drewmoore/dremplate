@@ -19,6 +19,8 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
+    @contents = Content.all
+    @graphics = Graphic.all
   end
 
   def update
@@ -39,6 +41,20 @@ class PagesController < ApplicationController
       redirect_to pages_path, :notice => "Page at #{controller}##{action} has been deleted."
     else
       redirect_to pages_path, :notice => "Page at #{controller}##{action} could not be deleted."
+    end
+  end
+
+  def add_content
+    @page = Page.find(params[:pageId])
+    @content = Content.find(params[:contentId])
+    @errors = []
+    if !@page.contents.exists? @content
+      @page.contents << @content
+    else
+      @errors << "Page already contains that content."
+    end
+    respond_to do |format|
+      format.js
     end
   end
 

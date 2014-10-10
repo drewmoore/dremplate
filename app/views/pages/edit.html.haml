@@ -39,3 +39,31 @@
             %label.required-label
               %small.asterisk * required
   .col-xs-3
+.row
+  .col-xs-1
+  .col-xs-5
+    %h3 Page Contents
+    .row
+      .col-xs-12#contents-list
+        =render partial: 'contents_list', object: @page
+  .col-xs-5
+  .col-xs-1
+.row
+  .col-xs-1
+  .col-xs-5
+    %form
+      %fieldset
+        %legend Add a Content to This Page
+        %select#contents-menu{:data => {:id => @page.id}}
+          - @contents.each do |content|
+            %option{:value => content.id} #{content.identifier}
+        %button#add-content Add the Content
+  .col-xs-5
+    %form
+      %fieldset
+        %legend Add a Graphic to This Page
+        %select
+          - @graphics.each do |graphic|
+            %option{:value => graphic.id} #{graphic.identifier}
+        %button Add the Graphic
+  .col-xs-1
