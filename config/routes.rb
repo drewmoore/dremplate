@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :graphics
       get '/controls', to: 'controls#index'
       post '/pages/add-content', to: 'pages#add_content'
+      post '/pages/remove-content', to: 'pages#remove_content'
     end
     unauthenticated :user do
       root 'welcome#index', as: :unauthenticated_root

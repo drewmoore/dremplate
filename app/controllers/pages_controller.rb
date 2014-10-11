@@ -58,6 +58,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def remove_content
+    @page = Page.find(params[:pageId])
+    @errors = []
+    @page.contents.delete(params[:contentId])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   def page_params
     params.require(:page).permit(:title, :controller, :action)

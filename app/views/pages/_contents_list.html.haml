@@ -9,7 +9,7 @@
       %li
         %strong=link_to "#{content.identifier}", edit_content_path(content)
 
-        /%strong=button_to "Remove"
+        %button.remove-content{ :data => { :page_id => @page.id, :content_id => content.id } } Remove
 
         %p
           =render inline: content.text
