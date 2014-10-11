@@ -1,0 +1,15 @@
+- if @errors
+  %ul
+    - @errors.each do |error|
+      %li
+        %p.alert=error
+- if @page.graphics
+  %ul
+    - @page.graphics.each do |graphic|
+      %li
+        %strong=link_to "#{graphic.identifier}", edit_graphic_path(graphic)
+
+        %button.remove-graphic{ :data => { :page_id => @page.id, :graphic_id => graphic.id } } Remove
+
+        =image_tag(asset_path(graphic.image), class: graphic.identifier)
+

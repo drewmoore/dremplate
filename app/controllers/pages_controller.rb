@@ -60,8 +60,29 @@ class PagesController < ApplicationController
 
   def remove_content
     @page = Page.find(params[:pageId])
-    @errors = []
     @page.contents.delete(params[:contentId])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_graphic
+    @page = Page.find(params[:pageId])
+    @graphic = Graphic.find(params[:graphicId])
+    @errors = []
+    if !@page.graphics.exists? @graphic
+      @page.graphics << @graphic
+    else
+      @errors << "Page already contains that graphic."
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def remove_graphic
+    @page = Page.find(params[:pageId])
+    @page.graphics.delete(params[:graphicId])
     respond_to do |format|
       format.js
     end
