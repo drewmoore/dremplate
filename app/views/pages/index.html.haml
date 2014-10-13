@@ -1,15 +1,24 @@
 .row
   .col-xs-12
+    .row
     - @pages.each do |page|
-      .row
-        .col-xs-12
-          %h2=page.title
-          %p
+      .col-xs-4
+        .row
+          .col-xs-12
+            %h2=page.title
+            %p
+        .row
+          .col-xs-8
             #{page.controller}##{page.action}
             %ul
               - page.contents.each do |content|
                 %li
                   %p
                     =render inline: content.text
-          = button_to "Edit", edit_page_path(page.id), :method => :get
-          = button_to "Delete", page, data: {confirm: "Are you sure you want to delete the page at #{page.controller}##{page.action}?"}, :method => :delete
+          .col-xs-4
+            - page.graphics.each do |graphic|
+              =image_tag(asset_path(graphic.image), class: "pages-index-graphic-cell")
+        .row
+          .col-xs-12
+            = button_to "Edit", edit_page_path(page.id), :method => :get
+            = button_to "Delete", page, data: {confirm: "Are you sure you want to delete the page at #{page.controller}##{page.action}?"}, :method => :delete

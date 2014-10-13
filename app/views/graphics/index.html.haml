@@ -1,9 +1,10 @@
 .row
   .col-xs-12
+    .row
     - @graphics.each do |graphic|
-      .row
-        .col-xs-12
-          %h2=graphic.identifier
-          =image_tag(asset_path(graphic.image), class: graphic.identifier)
-          = button_to "Edit", edit_graphic_path(graphic.id), :method => :get
-          = button_to "Delete", graphic, data: {confirm: "Are you sure you want to delete the graphic?"}, :method => :delete
+      .col-xs-4.graphics-index-cell
+        %h2=graphic.identifier
+        =image_tag(asset_path(graphic.image), class: "graphics-index-pic")
+        <br />
+        = button_to "Edit", edit_graphic_path(graphic.id), :method => :get
+        = button_to "Delete", graphic, data: {confirm: "Are you sure you want to delete the graphic?"}, :method => :delete

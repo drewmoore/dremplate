@@ -5,3 +5,25 @@ li {
 .button_to, .button_to div {
   display: inline;
 }
+
+#contents-list p, #graphics-list p {
+  text-overflow: clip;
+}
+
+.asterisk {
+  color: rgba(255, 0, 0, 1);
+}
+
+.required-label {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+.graphics-index-cell {
+  text-align: center;
+}
+
+.graphics-index-pic {
+  max-width: 50%;
+}

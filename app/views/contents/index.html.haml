@@ -1,20 +1,21 @@
 .row
   .col-xs-12
+    .row
     - @contents.each do |content|
-      .row
-        .col-xs-12
-          %h2= content.identifier
-      .row
-        .col-xs-12
-          %p
-            =render inline: content.text
-          - if content.pages
-            - string = "On Pages:"
-            - content.pages.each do |page|
-              - string += " <a href='pages/#{page.id}/edit'>#{page.controller}##{page.action}</a>"
+      .col-xs-4
+        %h2= content.identifier
+        .row
+          .col-xs-12
             %p
-              =render inline: string
-      .row
-        .col-xs-12
-          = button_to "Edit", edit_content_path(content.id), :method => :get
-          = button_to "Delete", content, data: { confirm: "Are you sure you want to delete this content?" }, :method => :delete
+              =render inline: content.text
+            - if content.pages
+              - string = "On Pages:"
+              - content.pages.each do |page|
+                - string += " <a href='pages/#{page.id}/edit'>#{page.controller}##{page.action}</a>"
+              %p
+                =render inline: string
+        .row
+          .col-xs-12
+            = button_to "Edit", edit_content_path(content.id), :method => :get
+            = button_to "Delete", content, data: { confirm: "Are you sure you want to delete this content?" }, :method => :delete
+

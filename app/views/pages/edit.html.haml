@@ -41,15 +41,12 @@
   .col-xs-3
 .row
   .col-xs-1
-  .col-xs-5
-    .row
-      .col-xs-6#contents-list
-        %h3 Page Contents
-        =render partial: 'contents_list', object: @page
-      .col-xs-6#graphics-list
-        %h3 Page Graphics
-        =render partial: 'graphics_list', object: @page
-  .col-xs-5
+  .col-xs-5#contents-list
+    %h3 Page Contents
+    =render partial: 'contents_list', object: @page
+  .col-xs-5#graphics-list
+    %h3 Page Graphics
+    =render partial: 'graphics_list', object: @page
   .col-xs-1
 .row
   .col-xs-1
