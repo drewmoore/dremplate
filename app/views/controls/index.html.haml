@@ -17,9 +17,6 @@
   .col-xs-8
     .row
       .col-xs-4.admin-text.controls-index-menu-desc
-        %h4 Control Panel Home
-        %p Takes you to this page.
-      .col-xs-4.admin-text.controls-index-menu-desc
         %h4 Pages
         %p
           %strong Manage
@@ -39,11 +36,25 @@
         %p
           Lists all the different blocks of text on your site for editing. This is a good menu to use to edit text that appears on more than
           one page.
-    .row
+        %p
+          Contents, like graphics, are listed by their <strong>identifiers</strong>, which let your web browser know where to put and what to do with
+          them.
+        %p
+          For example, if you owned a store and wanted to change your hours of operation, the <strong>identifier</strong> for that content
+          would most likely be <strong>hours-of-operation</strong>.
+        %p
+          Each content listing will include the pages on your site on which it resides, listed by
+          <strong>controller</strong> and <strong>action</strong>.
       .col-xs-4.admin-text.controls-index-menu-desc
         %h4 Graphics
         %p
-          Lists all the different images used on your website that can be changed. Be careful, as any new uploaded image will overwrite the old
-          file.
-      .col-xs-4
-      .col-xs-4
+          Lists all the different images used on your website that can be changed.
+        %p
+          Graphics, like contents, are listed by their <strong>identifiers</strong>. If you were to "open up the hood" on your site, you would
+          see that these identifiers also contain instructions to a web browser on exactly where to put and how to size the images they represent.
+        %p
+          For example, if you wanted to change your company's logo, you would just have to find the graphic with an <strong>identifier</strong>
+          named <strong>company-logo</strong>, or <strong>brand-image</strong>, etc.
+        %p
+          Each graphic listing will include the pages on your site that display this image, listed by <strong>controller</strong>
+          and <strong>action</strong>.

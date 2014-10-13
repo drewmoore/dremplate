@@ -1,6 +1,6 @@
 .row
   .col-xs-3
-  .col-xs-6
+  .col-xs-6.admin-text
     =form_for @page do |f|
       %fieldset
         %legend Edit a Page
@@ -41,16 +41,16 @@
   .col-xs-3
 .row
   .col-xs-1
-  .col-xs-5#contents-list
+  .col-xs-5.admin-text#contents-list
     %h3 Page Contents
     =render partial: 'contents_list', object: @page
-  .col-xs-5#graphics-list
+  .col-xs-5.admin-text#graphics-list
     %h3 Page Graphics
     =render partial: 'graphics_list', object: @page
   .col-xs-1
 .row
   .col-xs-1
-  .col-xs-5
+  .col-xs-5.admin-text
     %form
       %fieldset
         %legend Add a Content to This Page
@@ -58,7 +58,7 @@
           - @contents.each do |content|
             %option{:value => content.id} #{content.identifier}
         %button#add-content Add the Content
-  .col-xs-5
+  .col-xs-5.admin-text
     %form
       %fieldset
         %legend Add a Graphic to This Page

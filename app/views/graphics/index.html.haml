@@ -2,9 +2,20 @@
   .col-xs-12
     .row
     - @graphics.each do |graphic|
-      .col-xs-4.graphics-index-cell
-        %h2=graphic.identifier
-        =image_tag(asset_path(graphic.image), class: "graphics-index-pic")
-        <br />
-        = button_to "Edit", edit_graphic_path(graphic.id), :method => :get
-        = button_to "Delete", graphic, data: {confirm: "Are you sure you want to delete the graphic?"}, :method => :delete
+      .col-xs-4.graphics-index-cell.admin-text
+        .row
+          .col-xs-12
+            %h2=graphic.identifier
+            =image_tag(asset_path(graphic.image), class: "graphics-index-pic")
+        .row
+          .col-xs-12
+            - if graphic.pages
+              - string = "On Pages:"
+              - graphic.pages.each do |page|
+                - string += " <a href='pages/#{page.id}/edit'>#{page.controller}##{page.action}</a>"
+              %p
+                =render inline: string
+        .row
+          .col-xs-12
+            = button_to "Edit", edit_graphic_path(graphic.id), :method => :get
+            = button_to "Delete", graphic, data: {confirm: "Are you sure you want to delete the graphic?"}, :method => :delete

@@ -1,8 +1,13 @@
 $admin-background: rgba(200,200,200, .9);
 $admin-text-background: rgba(230, 230, 230, 1);
+$admin-cell-background: rgba(180, 180, 180, 1);
 
 body {
   background-color: $admin-background;
+}
+
+legend {
+  text-align: center;
 }
 
 li {
@@ -13,8 +18,22 @@ li {
   display: inline;
 }
 
-#contents-list p, #graphics-list p {
-  text-overflow: clip;
+#contents-list, #graphics-list {
+  h3 {
+    text-align: center;
+  }
+  p {
+    text-overflow: clip;
+  }
+  .graphics-list-images {
+    text-align: right;
+  }
+  img {
+    max-width: 25%;
+  }
+  button {
+    float: right;
+  }
 }
 
 .asterisk {
@@ -52,10 +71,15 @@ li {
   text-indent: 1em;
 }
 
+.admin-cell {
+  padding: 1em;
+}
+
 .admin-text {
   background-color: $admin-text-background;
   border-radius: 10px;
   padding: 1.25em;
+  border: 1em solid $admin-cell-background;
 }
 
 .controls-index-menu-desc {
@@ -63,3 +87,4 @@ li {
     text-align: center;
   }
 }
+
