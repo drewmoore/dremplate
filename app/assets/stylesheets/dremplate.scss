@@ -1,3 +1,10 @@
+$admin-background: rgba(200,200,200, .9);
+$admin-text-background: rgba(230, 230, 230, 1);
+
+body {
+  background-color: $admin-background;
+}
+
 li {
   list-style-type: none;
 }
@@ -26,4 +33,33 @@ li {
 
 .graphics-index-pic {
   max-width: 50%;
+}
+
+.pages-index-cell-header {
+  text-align: center;
+}
+
+.pages-index-cell-display {
+  max-height: 18em;
+  overflow: auto;
+}
+
+.controls-index-heading {
+  text-align: center;
+}
+
+.controls-index-intro {
+  text-indent: 1em;
+}
+
+.admin-text {
+  background-color: $admin-text-background;
+  border-radius: 10px;
+  padding: 1.25em;
+}
+
+.controls-index-menu-desc {
+  h4 {
+    text-align: center;
+  }
 }

@@ -94,7 +94,9 @@
   <%= yield %>
 
   <div>
-    <a href="/users/sign_in">Control Panel</a>
+    <% if !user_signed_in? %>
+      <a href="/users/sign_in">Control Panel</a>
+    <% end %>
   </div>
 
 </div>

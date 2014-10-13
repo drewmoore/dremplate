@@ -4,12 +4,11 @@
     - @pages.each do |page|
       .col-xs-4
         .row
-          .col-xs-12
+          .col-xs-12.pages-index-cell-header
             %h2=page.title
-            %p
-        .row
+            %strong #{page.controller}##{page.action}
+        .row.pages-index-cell-display
           .col-xs-8
-            #{page.controller}##{page.action}
             %ul
               - page.contents.each do |content|
                 %li
