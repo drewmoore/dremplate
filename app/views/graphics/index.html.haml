@@ -1,7 +1,9 @@
 .row
   .col-xs-12
-    .row
+    - column = 0
     - @graphics.each do |graphic|
+      - if column % 3 == 0
+        .row
       .col-xs-4.graphics-index-cell.admin-text
         .row
           .col-xs-12
@@ -20,3 +22,4 @@
             = button_to "Edit", edit_graphic_path(graphic.id), :method => :get
             - if current_user.role == "admin"
               = button_to "Delete", graphic, data: {confirm: "Are you sure you want to delete the graphic?"}, :method => :delete
+      - column = column + 1

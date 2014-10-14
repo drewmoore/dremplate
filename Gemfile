@@ -44,6 +44,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'therubyracer'
 gem 'carrierwave'
 gem 'devise'
+gem 'jquery-turbolinks'
 
 group :production do
   gem 'rails_12factor'

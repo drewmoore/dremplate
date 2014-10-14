@@ -21,6 +21,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
+  def get_contents page
+    contents = {}
+    page.contents.each do |c|
+      contents[c.identifier] = c
+    end
+    return contents
+  end
+
+  def get_graphics page
+    graphics = {}
+    page.graphics.each do |g|
+      graphics[g.identifier] = g
+    end
+    return graphics
+  end
+
   protected
 
   def layout_by_resource

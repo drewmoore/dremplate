@@ -1,15 +1,49 @@
 .row
   .col-xs-3
   - identifier = "home-index-heading"
-  - text = @page.contents.find_by(identifier: identifier).text
+  - text = @contents[identifier].text
   .col-xs-6(class=identifier)
     %h1 This Is A Sample Website On Dremplate
-    %h3 <a href="users/sign_in">Sign In</a> to <strong class="customize">#{text}</strong> Me Up!
+    %h3 <a href="users/sign_in">Sign In</a> or <a href="users/sign_up">Sign Up</a> to <strong class="customize">#{text}</strong> Me Up!
   .col-xs-3
 .row
   .col-xs-3
-  - identifier = "home-index-head-image"
-  - image = @page.graphics.find_by(identifier: identifier).image
-  .col-xs-6(class=identifier)
-    =image_tag(asset_path(image))
+  .col-xs-6.home-index-coin-flip-box
+    %strong.customize Click Me:
+    - identifier = "home-index-head-image"
+    - image = @graphics[identifier].image
+    %div.home-index-coin-flip(class=identifier)
+      =image_tag(asset_path(image))
+
+    - identifier = "home-index-tails-image"
+    - image = @graphics[identifier].image
+    %div.home-index-coin-flip.hide(class=identifier)
+      =image_tag(asset_path(image))
   .col-xs-3
+.row
+  .col-xs-3
+  .col-xs-6.mad-lib
+    %h3 Dostoyevsky Mad Lib:
+    %p
+      “There is something at the bottom of every new human thought, every thought of genius, or even every earnest thought that springs
+      - identifier = "mad-lib-1"
+      - text = @contents[identifier].text
+      up in any <strong class="customize">#{text}</strong>,
+      - identifier = "mad-lib-2"
+      - text = @contents[identifier].text
+      which can never be communicated to <strong class="customize">#{text}</strong>, even if one were to write volumes about it and were explaining one's
+      - identifier = "mad-lib-3"
+      - text = @contents[identifier].text
+      idea for <strong class="customize">#{text}</strong> years; there's something left which cannot be induced to emerge from your brain, and remains with you forever;
+      - identifier = "mad-lib-4"
+      - text = @contents[identifier].text
+      and with it you will die, without communicating to anyone perhaps the most important of your <strong class="customize">#{text}</strong>.”
+      <br />
+      - identifier = "mad-lib-title"
+      - text = @contents[identifier].text
+      ― Fyodor Dostoyevsky, <strong class="customize"><em>#{text}</em></strong>
+
+      %h4
+        %a{:href => "/trivia"} Test Your Trivia Skills!
+  .col-xs-3
+

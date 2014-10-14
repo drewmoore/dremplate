@@ -1,7 +1,9 @@
 .row
   .col-xs-12
-    .row
+    - column = 0
     - @pages.each do |page|
+      - if column % 3 == 0
+        .row
       .col-xs-4.admin-text
         .row
           .col-xs-12.pages-index-cell-header
@@ -22,3 +24,4 @@
             = button_to "Edit", edit_page_path(page.id), :method => :get
             - if current_user.role == "admin"
               = button_to "Delete", page, data: {confirm: "Are you sure you want to delete the page at #{page.controller}##{page.action}?"}, :method => :delete
+      - column = column + 1
