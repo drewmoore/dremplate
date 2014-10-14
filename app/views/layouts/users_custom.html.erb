@@ -68,13 +68,13 @@
     </div>
   <% end %>
 
-  <%= yield %>
+  <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4 admin-text">
+      <%= yield %>
+    </div>
+    <div class="col-xs-4"></div>
 
-  <div>
-    <% if !user_signed_in? %>
-      <a href="/users/sign_in">Control Panel</a>
-    <% end %>
-  </div>
 </div>
 
 </body>
