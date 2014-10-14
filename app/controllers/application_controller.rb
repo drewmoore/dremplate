@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :get_pages
+  layout :layout_by_resource
+  before_filter :update_sanitized_params, if: :devise_controller?
 
   def after_sign_in_path_for user
+    controls_path
+  end
+
+  def after_account_update_path_for user
     controls_path
   end
 
@@ -13,6 +19,20 @@ class ApplicationController < ActionController::Base
     if session
       @pages = Page.all
     end
+  end
+
+  protected
+
+  def layout_by_resource
+    if devise_controller?
+      "users_custom"
+    else
+      "application"
+    end
+  end
+
+  def update_sanitized_params
+    devise_parameter_sanitizer.for(:account_update) << :role
   end
 
 end

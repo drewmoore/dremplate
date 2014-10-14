@@ -63,6 +63,14 @@ li {
   overflow: auto;
 }
 
+.pages-index-cell-graphics {
+  text-align: right;
+  img {
+    max-width: 50%;
+    margin: .5em;
+  }
+}
+
 .controls-index-heading {
   text-align: center;
 }

@@ -9,7 +9,8 @@
       %li
         %strong=link_to "#{content.identifier}", edit_content_path(content)
 
-        %button.remove-content{ :data => { :page_id => @page.id, :content_id => content.id } } Remove
+        - if current_user.role == "admin"
+          %button.remove-content{ :data => { :page_id => @page.id, :content_id => content.id } } Remove
 
         %p
           =render inline: content.text
