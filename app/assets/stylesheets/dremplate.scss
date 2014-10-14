@@ -80,6 +80,15 @@ li {
   border-radius: 10px;
   padding: 1.25em;
   border: 1em solid $admin-cell-background;
+  h5 {
+    font-weight: 800;
+    text-align: center;
+    margin: 0px auto 1.5em auto;
+  }
+}
+
+.admin-text-identifier {
+  text-align: center;
 }
 
 .controls-index-menu-desc {
@@ -88,3 +97,10 @@ li {
   }
 }
 
+.graphic-edit-image-display {
+  text-align: center;
+  padding: 1.5em;
+  img {
+    max-width: 30%;
+  }
+}

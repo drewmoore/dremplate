@@ -4,6 +4,9 @@
     = form_for @graphic, html: { multipart: true } do |f|
       %fieldset
         %legend Edit a Graphic
+        .row
+          .col-xs-12.graphic-edit-image-display
+            =image_tag(asset_path(@graphic.image))
         = if @graphic.errors.any?
           .row
             .col-xs-12
